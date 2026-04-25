@@ -1,0 +1,311 @@
+/* ── Reset base ── */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* ── Hero ── */
+#hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    max-width: 1920px;
+    max-height: 1080px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: #f8f9ff;
+}
+
+#bg-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* ── Header: botones interactivos ── */
+.content-header {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.lenguaje,
+.claro {
+    position: absolute;
+    top: 24px;
+    background: none;
+    border: 1px solid #0e0e0e;
+    cursor: pointer;
+    font-size: 14px;
+    color: #444;
+    transition: all 0.4s;
+    border-radius: 30px;
+    height: 36px;           
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lenguaje {
+    right: 80px;
+    padding: 0 16px;       
+}
+
+.claro {
+    right: 24px;
+    width: 44px;           
+    padding: 0;
+}
+
+.claro {
+    right: 24px;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lenguaje:hover,
+.claro:hover {
+    background: #090136;
+}
+
+.lenguaje:hover,
+.claro:hover i {
+    color: #e3deff;
+
+}
+
+/* ── Contenido central ── */
+.content-inicio {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    width: min(640px, 90%);
+}
+
+/* "Bienvenido" */
+.welcome {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #7575d4;
+    letter-spacing: 0.03em;
+}
+
+/* Nombre principal */
+.Presentacion {
+    font-size: 3.8rem;
+    font-weight: 700;
+    padding: 1rem 0;
+    background-image: linear-gradient(to right, #3b69be, #3c3ea7 ,#460cb3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1.1;
+}
+
+/* ── Carrusel ── */
+.carousel-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    justify-content: center;
+}
+
+.carousel {
+    overflow: hidden;
+    width: 320px;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.45s cubic-bezier(.77, 0, .18, 1);
+}
+
+.carousel-slide {
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-slide p {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #0c0c46;
+}
+
+.arr-btn {
+    background: none;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+    color: #aaaacc;
+    transition: color 0.5s, transform 0.5s;
+    flex-shrink: 0;
+}
+
+.arr-btn svg {
+    width: 22px;
+    height: 22px;
+}
+
+.arr-btn:hover {
+    color: #5b3fc8;
+    transform: scale(1.2);
+}
+
+.arr-btn:active {
+    transform: scale(1.5);
+}
+
+/* Dots */
+.carousel-dots {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: -4px;
+}
+
+.dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #d0cce8;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    padding: 0;
+}
+
+.dot.active {
+    background: #5b3fc8;
+    transform: scale(1.3);
+}
+
+/* ── Párrafo de introducción ── */
+.introduccion p {
+    font-size: 0.99rem;
+    font-weight: 600;
+    color: #555577;
+    line-height: 1.7;
+    max-width: 520px;
+    text-align: center;
+    padding: .9rem 0;
+}
+
+
+/* Spans de tecnologías */
+.html {
+    color: #e34c26;
+    font-weight: 500;
+}
+
+.CSS {
+    color: #264de4;
+    font-weight: 500;
+}
+
+.Javascript {
+    color: #f0db4f;
+    font-weight: 500;
+    background: #2d2d2d;
+    padding: 0 4px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.Python {
+    color: #f5d000;
+    font-weight: 600;
+    background: #264de4;
+    border: solid 1px #2c13b9;
+    padding: 0 4px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+/* ── Botones CTA ── */
+.Link.inicio {
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.Link.inicio a {
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.15s;
+}
+
+.Link.inicio a:first-child {
+    background-image: linear-gradient(100deg, #3b69be, #460cb3);
+    color: #fff;
+}
+
+.Link.inicio a:last-child {
+    background: transparent;
+    color: #2d2d4e;
+    border: 1.5px solid #c0bce0;
+}
+
+.Link.inicio a:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+}
+
+.Link.inicio a:active {
+    transform: scale(0.90);
+}
+
+/* ── Flecha de continuar ── */
+.continuar {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #aaaacc;
+    font-size: 1.4rem;
+    animation: bounce 1.8s infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(8px);
+    }
+}
+
+/* ── Sección portfolio ── */
+#portfolio {
+    background: #ffffff;
+    padding: 4rem 2rem;
+}

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="Portafolio" content="Portafolio web para desarrollador front-end">
+    <title>Portafolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- SECCIÓN HERO -->
+    <section id="hero">
+
+        <canvas id="bg-canvas"></canvas>
+
+        <div class="content-header">
+            <button class="lenguaje">EN</button>
+            <button class="claro"><i class="fa-solid fa-moon"></i></button>
+
+            <div class="content-inicio">
+                <h4 class="welcome">Bienvenido</h4>
+                <h1 class="Presentacion">Lucas Monge</h1>
+
+                <!-- CARRUSEL CON FLECHAS -->
+                <div class="carousel-row">
+
+                    <button class="arr-btn" onclick="prev()" aria-label="Anterior">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6" />
+                        </svg>
+                    </button>
+
+                    <div class="carousel">
+                        <div class="carousel-track" id="track">
+                            <div class="carousel-slide">
+                                <p>Desarrollador web</p>
+                            </div>
+                            <div class="carousel-slide">
+                                <p>Especializado en Front-End</p>
+                            </div>
+                            <div class="carousel-slide">
+                                <p>Siempre aprendiendo</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="arr-btn" onclick="next()" aria-label="Siguiente">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6" />
+                        </svg>
+                    </button>
+
+                </div>
+
+                <div class="carousel-dots">
+                    <button class="dot active" onclick="goTo(0)"></button>
+                    <button class="dot" onclick="goTo(1)"></button>
+                    <button class="dot" onclick="goTo(2)"></button>
+                </div>
+
+                <!-- Presentación -->
+                <div class="introduccion">
+                    <p>
+                        Soy un desarrollador web centrado en el front-end, tengo experiencia en
+                        <span class="html">HTML</span>, <span class="CSS">CSS</span>,
+                        <span class="Javascript">JavaScript</span> y <span class="Python">Python</span>.
+                        Disfruto de los proyectos nuevos, de aprender nuevas tecnologías y siempre me
+                        encuentro dispuesto a mejorar.
+                    </p>
+                </div>
+
+                <div class="Link inicio">
+                    <a href="#">Contáctame</a>
+                    <a href="#">Ver proyectos</a>
+                </div>
+            </div>
+            <div class="continuar"><i class="fa-solid fa-angles-down"></i></div>
+
+        </div>
+
+    </section>
+
+    <!-- RESTO DEL PORTAFOLIO -->
+    <section id="portfolio">
+
+    </section>
+
+    <script src="https://kit.fontawesome.com/f9936e573a.js" crossorigin="anonymous"></script>
+
+    <script>
+        /* ── CANVAS PARTÍCULAS ── */
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let W, H, particles = [];
+        const NUM = 0, MAX_DIST = 150;
+        const COLOR = '192, 132, 252';
+
+        function resize() {
+            const hero = document.getElementById('hero');
+            W = canvas.width = hero.offsetWidth;
+            H = canvas.height = hero.offsetHeight;
+        }
+
+        function makeParticle() {
+            return {
+                x: Math.random() * W,
+                y: Math.random() * H,
+                vx: (Math.random() - 0.5) * 0.8,
+                vy: (Math.random() - 0.5) * 0.8,
+                r: Math.random() * 2 + 1,
+            };
+        }
+
+        function loop() {
+            const grad = ctx.createLinearGradient(0, 0, W * 0.6, H);
+            grad.addColorStop(0, '#ffffff');
+            grad.addColorStop(1, '#f0f0f0');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, W, H);
+
+            for (let i = 0; i < particles.length; i++) {
+                const p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.x < 0 || p.x > W) p.vx *= -1;
+                if (p.y < 0 || p.y > H) p.vy *= -1;
+
+                for (let j = i + 1; j < particles.length; j++) {
+                    const q = particles[j];
+                    const d = Math.hypot(p.x - q.x, p.y - q.y);
+                    if (d < MAX_DIST) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(q.x, q.y);
+                        ctx.strokeStyle = `rgba(${COLOR}, ${(1 - d / MAX_DIST) * 0.5})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.stroke();
+                    }
+                }
+
+                const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
+                g.addColorStop(0, `rgba(${COLOR}, 1)`);
+                g.addColorStop(1, `rgba(${COLOR}, 0)`);
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2);
+                ctx.fillStyle = g;
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = '#c084fc';
+                ctx.fill();
+            }
+            requestAnimationFrame(loop);
+        }
+
+        window.addEventListener('resize', () => {
+            resize();
+            particles = Array.from({ length: NUM }, makeParticle);
+        });
+
+        resize();
+        particles = Array.from({ length: NUM }, makeParticle);
+        loop();
+
+        /* ── CARRUSEL ── */
+        let current = 0;
+        const total = 3;
+        const track = document.getElementById('track');
+        const dots = document.querySelectorAll('.dot');
+        let timer;
+
+        function goTo(i) {
+            current = (i + total) % total;
+            track.style.transform = `translateX(-${current * 100}%)`;
+            dots.forEach((d, idx) => d.classList.toggle('active', idx === current));
+        }
+        function next() { goTo(current + 1); resetTimer(); }
+        function prev() { goTo(current - 1); resetTimer(); }
+        function resetTimer() { clearInterval(timer); timer = setInterval(next, 3000); }
+
+        timer = setInterval(next, 3000);
+    </script>
+
+</body>
+
+</html>
