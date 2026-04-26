@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="Portafolio" content="Portafolio web para desarrollador front-end">
     <title>Portafolio</title>
+    <link rel="icon" type="img/favicon" href="IMGS/favicon-portfolio.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -75,20 +76,174 @@
 
                 <div class="Link inicio">
                     <a href="#">Contáctame</a>
-                    <a href="#">Ver proyectos</a>
+                    <a href="#proyectos">Ver proyectos</a>
                 </div>
             </div>
-            <div class="continuar"><i class="fa-solid fa-angles-down"></i></div>
+            <div class="continuar"><a href="#about-me" class="continuar1"><i class="fa-solid fa-angles-down"></i></a>
+            </div>
 
         </div>
 
     </section>
 
     <!-- RESTO DEL PORTAFOLIO -->
-    <section id="portfolio">
+    <section id="about-me">
+        <div class="about-container">
+
+            <!-- Título de sección -->
+            <h2 class="section-title">Sobre mí</h2>
+
+            <!-- Texto de presentación -->
+            <div class="about-text">
+                <p class="p"> <strong>
+                        Información personal
+                    </strong></p>
+                <p>
+                    Soy un desarrollador web interesado en la planificación, el diseño y el desarrollo de soluciones
+                    digitales a problemas reales y generar valor en el proceso, disfruto de los problemas pero mi parte
+                    favorito es el diseño.
+                    Los lenguajes que más suelo utilizar son:
+                    <span class="html">HTML</span>,
+                    <span class="CSS">CSS</span>,
+                    <span class="Javascript">JavaScript</span> y
+                    <span class="Python">Python</span>.
+                    Siempre estoy motivado a aprender nuevas tecnologías.
+                    <br>
+                    Mi objetivo es seguir mejorando mis habilidades como desarrollador y crear proyectos de alta
+                    calidad.
+                </p>
+            </div>
+
+            <!-- Skills -->
+            <div class="skills-container">
+                <h3 class="skills-title">Mis Habilidades</h3>
+
+                <div class="skills-grid">
+
+                    <div class="skill-card">
+                        <span><img
+                                src="https://cdn.iconscout.com/icon/free/png-256/free-html-5-icon-svg-download-png-1175208.png"
+                                alt="html"></span>
+                        <span>HTML</span>
+                    </div>
+
+                    <div class="skill-card">
+                        <span><img
+                                src="https://cdn.iconscout.com/icon/free/png-256/free-css3-icon-svg-download-png-1175237.png"
+                                alt="CSS"></span>
+                        <span>CSS</span>
+                    </div>
+
+                    <div class="skill-card">
+                        <span><img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+                                alt="JavaScript"></span>
+                        <span>JavaScript</span>
+                    </div>
+
+                    <div class="skill-card">
+                        <span><img
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Python-logo.png/1280px-Python-logo.png"
+                                alt="Python"></span>
+                        <span>Python</span>
+                    </div>
+
+                    <div class="skill-card">
+                        <span><img class="mysql-img" src="https://download.logo.wine/logo/MySQL/MySQL-Logo.wine.png"
+                                alt="MySQL"></span>
+                        <span>MySQL</span>
+                    </div>
+
+
+
+                    <!-- Agrega más cards aquí -->
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PROYECTOSSS -->
+
+    <section id="proyectos">
+
+        <div class="project-title">
+            <h1 class="section-title">Mis proyectos</h1>
+        </div>
+
+        <div class="project-container">
+            <div class="project-grid">
+
+                <div class="project-card">
+                    <div class="project-img">
+                        <a href="#" target="_blank" rel="noopener noreferrer"><img src="" alt="Proyecto 1"></a>
+                    </div>
+                    <div class="project-info">
+                        <h3>Nombre del proyecto</h3>
+                        <p>Descripción breve del proyecto.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">
+                        <a href="https://cafe-los-baristas.netlify.app/" target="_blank" rel="noopener noreferrer"><img src="IMGS/Cafe.png" alt="Proyecto 2"></a>
+                    </div>
+                    <div class="project-info">
+                        <h3>Cafeteria los baristas</h3>
+                        <p>Catálogo especial de la tienda Los Baristas, diseñado para que los clientes puedan
+                            ver y comprar los productos deseados en tiempo real y sin ninguna complicación.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">
+                        <a href="#" target="_blank" rel="noopener noreferrer"><img src="" alt="Proyecto 3"></a>
+                    </div>
+                    <div class="project-info">
+                        <h3>Nombre del proyecto</h3>
+                        <p>Descripción breve del proyecto.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">
+                        <a href="#" target="_blank" rel="noopener noreferrer"><img src="img/proyecto4.png" alt="Proyecto 4"></a>
+                    </div>
+                    <div class="project-info">
+                        <h3>Nombre del proyecto</h3>
+                        <p>Descripción breve del proyecto.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
 
     </section>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- SCRIPTS -->
     <script src="https://kit.fontawesome.com/f9936e573a.js" crossorigin="anonymous"></script>
 
     <script>
@@ -96,7 +251,7 @@
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let W, H, particles = [];
-        const NUM = 0, MAX_DIST = 150;
+        const NUM = 50, MAX_DIST = 150;
         const COLOR = '192, 132, 252';
 
         function resize() {
