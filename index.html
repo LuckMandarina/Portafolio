@@ -3,13 +3,48 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="Portafolio" content="Portafolio web para desarrollador front-end">
+    <meta name="description" content="Portafolio web para desarrollador front-end">
     <title>Portafolio</title>
     <link rel="icon" type="img/favicon" href="IMGS/favicon-portfolio.png">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <style>
+        [data-lang] { display: none; }
+        body[lang="es"] [data-lang="es"] { display: inline; }
+        body[lang="en"] [data-lang="en"] { display: inline; }
+
+        body[lang="es"] p[data-lang="es"],
+        body[lang="es"] h1[data-lang="es"],
+        body[lang="es"] h2[data-lang="es"],
+        body[lang="es"] h3[data-lang="es"],
+        body[lang="es"] h4[data-lang="es"],
+        body[lang="es"] label[data-lang="es"] { display: block; }
+
+        body[lang="en"] p[data-lang="en"],
+        body[lang="en"] h1[data-lang="en"],
+        body[lang="en"] h2[data-lang="en"],
+        body[lang="en"] h3[data-lang="en"],
+        body[lang="en"] h4[data-lang="en"],
+        body[lang="en"] label[data-lang="en"] { display: block; }
+
+        /* Botones y anchors con inline-block */
+        body[lang="es"] a[data-lang="es"],
+        body[lang="es"] button[data-lang="es"] { display: inline-block; }
+        body[lang="en"] a[data-lang="en"],
+        body[lang="en"] button[data-lang="en"] { display: inline-block; }
+
+        /* Títulos con display:flex en CSS externo — Aparentemente se deben restaurar explícitamente */
+        body[lang="es"] h2.section-title[data-lang="es"],
+        body[lang="es"] h3.section-title[data-lang="es"],
+        body[lang="es"] h3.skills-title[data-lang="es"] { display: flex; }
+
+        body[lang="en"] h2.section-title[data-lang="en"],
+        body[lang="en"] h3.section-title[data-lang="en"],
+        body[lang="en"] h3.skills-title[data-lang="en"] { display: flex; }
+    </style>
 </head>
 
-<body>
+<body lang="es">
 
     <!-- SECCIÓN HERO -->
     <section id="hero">
@@ -17,11 +52,14 @@
         <canvas id="bg-canvas"></canvas>
 
         <div class="content-header">
-            <button class="lenguaje">EN</button>
+            <button class="lenguaje" id="btn-lenguaje">EN</button>
             <button class="claro"><i class="fa-solid fa-moon"></i></button>
 
             <div class="content-inicio">
-                <h4 class="welcome">Bienvenido</h4>
+
+                <h4 class="welcome" data-lang="es">Bienvenido</h4>
+                <h4 class="welcome" data-lang="en">Welcome</h4>
+
                 <h1 class="Presentacion">Lucas Monge</h1>
 
                 <!-- CARRUSEL CON FLECHAS -->
@@ -37,13 +75,16 @@
                     <div class="carousel">
                         <div class="carousel-track" id="track">
                             <div class="carousel-slide">
-                                <p>Desarrollador web</p>
+                                <p data-lang="es">Desarrollador web</p>
+                                <p data-lang="en">Web Developer</p>
                             </div>
                             <div class="carousel-slide">
-                                <p>Especializado en Front-End</p>
+                                <p data-lang="es">Especializado en Front-End</p>
+                                <p data-lang="en">Specialized in Front-End</p>
                             </div>
                             <div class="carousel-slide">
-                                <p>Siempre aprendiendo</p>
+                                <p data-lang="es">Siempre aprendiendo</p>
+                                <p data-lang="en">Always learning</p>
                             </div>
                         </div>
                     </div>
@@ -63,112 +104,114 @@
                     <button class="dot" onclick="goTo(2)"></button>
                 </div>
 
-                <!-- Presentación -->
+                <!-- INTRODUCCIóN -->
                 <div class="introduccion">
-                    <p>
+                    <p data-lang="es">
                         Soy un desarrollador web centrado en el front-end, tengo experiencia en
                         <span class="html">HTML</span>, <span class="CSS">CSS</span>,
                         <span class="Javascript">JavaScript</span> y <span class="Python">Python</span>.
                         Disfruto de los proyectos nuevos, de aprender nuevas tecnologías y siempre me
                         encuentro dispuesto a mejorar.
                     </p>
+                    <p data-lang="en">
+                        I am a front-end focused web developer with experience in
+                        <span class="html">HTML</span>, <span class="CSS">CSS</span>,
+                        <span class="Javascript">JavaScript</span> and <span class="Python">Python</span>.
+                        I enjoy new projects, learning new technologies and I am always willing to improve.
+                    </p>
                 </div>
 
                 <div class="Link inicio">
-                    <a href="#">Contáctame</a>
-                    <a href="#proyectos">Ver proyectos</a>
+                    <a href="#contacto" data-lang="es" class="btn-primary">Contáctame</a>
+                    <a href="#contacto" data-lang="en" class="btn-primary">Contact me</a>
+                    <a href="#proyectos" data-lang="es" class="btn-outline">Ver proyectos</a>
+                    <a href="#proyectos" data-lang="en" class="btn-outline">View projects</a>
                 </div>
+
             </div>
-            <div class="continuar"><a href="#about-me" class="continuar1"><i class="fa-solid fa-angles-down"></i></a>
+
+            <div class="continuar">
+                <a href="#about-me" class="continuar1">
+                    <i class="fa-solid fa-angles-down"></i>
+                </a>
             </div>
 
         </div>
 
     </section>
 
-    <!-- RESTO DEL PORTAFOLIO -->
+    <!-- SOBRE MÍ -->
     <section id="about-me">
         <div class="about-container">
 
-            <!-- Título de sección -->
-            <h2 class="section-title">Sobre mí</h2>
+            <h2 class="section-title" data-lang="es">Sobre mí</h2>
+            <h2 class="section-title" data-lang="en">About me</h2>
 
-            <!-- Texto de presentación -->
             <div class="about-text">
-                <p class="p"> <strong>
-                        Información personal
-                    </strong></p>
-                <p>
+
+                <p class="p" data-lang="es"><strong>Información personal</strong></p>
+                <p class="p" data-lang="en"><strong>Personal information</strong></p>
+
+                <p data-lang="es">
                     Soy un desarrollador web interesado en la planificación, el diseño y el desarrollo de soluciones
                     digitales a problemas reales y generar valor en el proceso, disfruto de los problemas pero mi parte
-                    favorito es el diseño.
-                    Los lenguajes que más suelo utilizar son:
-                    <span class="html">HTML</span>,
-                    <span class="CSS">CSS</span>,
-                    <span class="Javascript">JavaScript</span> y
-                    <span class="Python">Python</span>.
-                    Siempre estoy motivado a aprender nuevas tecnologías.
-                    <br>
-                    Mi objetivo es seguir mejorando mis habilidades como desarrollador y crear proyectos de alta
-                    calidad.
+                    favorita es el diseño. Los lenguajes que más suelo utilizar son:
+                    <span class="html">HTML</span>, <span class="CSS">CSS</span>,
+                    <span class="Javascript">JavaScript</span> y <span class="Python">Python</span>.
+                    Siempre estoy motivado a aprender nuevas tecnologías.<br>
+                    Mi objetivo es seguir mejorando mis habilidades como desarrollador y crear proyectos de alta calidad.
                 </p>
+                <p data-lang="en">
+                    I am a web developer interested in planning, designing and developing digital solutions to real
+                    problems, generating value in the process. My favorite part is always the design.
+                    The languages I use most are:
+                    <span class="html">HTML</span>, <span class="CSS">CSS</span>,
+                    <span class="Javascript">JavaScript</span> and <span class="Python">Python</span>.
+                    I am always motivated to learn new technologies.<br>
+                    My goal is to keep improving my skills as a developer and create high quality projects.
+                </p>
+
             </div>
 
-            <!-- Skills -->
+            <!-- SKILLS CARDS (QUEEN CARD🗣️ temazo) -->
             <div class="skills-container">
-                <h3 class="skills-title">Mis Habilidades</h3>
+
+                <h3 class="skills-title" data-lang="es">Mis Habilidades</h3>
+                <h3 class="skills-title" data-lang="en">My Skills</h3>
 
                 <div class="skills-grid">
-
                     <div class="skill-card">
-                        <span><img
-                                src="https://cdn.iconscout.com/icon/free/png-256/free-html-5-icon-svg-download-png-1175208.png"
-                                alt="html"></span>
+                        <span><img src="https://cdn.iconscout.com/icon/free/png-256/free-html-5-icon-svg-download-png-1175208.png" alt="html"></span>
                         <span>HTML</span>
                     </div>
-
                     <div class="skill-card">
-                        <span><img
-                                src="https://cdn.iconscout.com/icon/free/png-256/free-css3-icon-svg-download-png-1175237.png"
-                                alt="CSS"></span>
+                        <span><img src="https://cdn.iconscout.com/icon/free/png-256/free-css3-icon-svg-download-png-1175237.png" alt="CSS"></span>
                         <span>CSS</span>
                     </div>
-
                     <div class="skill-card">
-                        <span><img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-                                alt="JavaScript"></span>
+                        <span><img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript"></span>
                         <span>JavaScript</span>
                     </div>
-
                     <div class="skill-card">
-                        <span><img
-                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Python-logo.png/1280px-Python-logo.png"
-                                alt="Python"></span>
+                        <span><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Python-logo.png/1280px-Python-logo.png" alt="Python"></span>
                         <span>Python</span>
                     </div>
-
                     <div class="skill-card">
-                        <span><img class="mysql-img" src="https://download.logo.wine/logo/MySQL/MySQL-Logo.wine.png"
-                                alt="MySQL"></span>
+                        <span><img class="mysql-img" src="https://download.logo.wine/logo/MySQL/MySQL-Logo.wine.png" alt="MySQL"></span>
                         <span>MySQL</span>
                     </div>
-
-
-
-                    <!-- Agrega más cards aquí -->
-
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- PROYECTOSSS -->
-
-    <section id="proyectos">
+    <!-- PROYECTOS -->
+    <section id="proyectos" class="proyectos">
 
         <div class="project-title">
-            <h1 class="section-title">Mis proyectos</h1>
+            <h2 class="section-title" data-lang="es">Mis proyectos</h2>
+            <h2 class="section-title" data-lang="en">My projects</h2>
         </div>
 
         <div class="project-container">
@@ -176,43 +219,56 @@
 
                 <div class="project-card">
                     <div class="project-img">
-                        <a href="#" target="_blank" rel="noopener noreferrer"><img src="" alt="Proyecto 1"></a>
+                        <a href="https://cafe-los-baristas.netlify.app/" target="_blank" rel="noopener noreferrer">
+                            <img src="IMGS/Cafe.png" alt="Cafeteria los baristas">
+                        </a>
                     </div>
                     <div class="project-info">
-                        <h3>Nombre del proyecto</h3>
-                        <p>Descripción breve del proyecto.</p>
+                        <h3 data-lang="es">Cafetería los baristas</h3>
+                        <h3 data-lang="en">The Baristas Coffee Shop</h3>
+                        <p data-lang="es">Catálogo especial de la tienda Los Baristas, diseñado para que los clientes
+                            puedan ver y comprar los productos deseados en tiempo real y sin ninguna complicación.</p>
+                        <p data-lang="en">Special catalog for Los Baristas, designed so customers can view and purchase
+                            desired products in real time without any complications.</p>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <div class="project-img">
-                        <a href="https://cafe-los-baristas.netlify.app/" target="_blank" rel="noopener noreferrer"><img src="IMGS/Cafe.png" alt="Proyecto 2"></a>
+                    <div class="project-img project-img--placeholder">
+                        <span data-lang="es">Próximamente</span>
+                        <span data-lang="en">Coming soon</span>
                     </div>
                     <div class="project-info">
-                        <h3>Cafeteria los baristas</h3>
-                        <p>Catálogo especial de la tienda Los Baristas, diseñado para que los clientes puedan
-                            ver y comprar los productos deseados en tiempo real y sin ninguna complicación.
-                        </p>
+                        <h3 data-lang="es">Próximo proyecto</h3>
+                        <h3 data-lang="en">Next project</h3>
+                        <p data-lang="es">Descripción próximamente.</p>
+                        <p data-lang="en">Description coming soon.</p>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <div class="project-img">
-                        <a href="#" target="_blank" rel="noopener noreferrer"><img src="" alt="Proyecto 3"></a>
+                    <div class="project-img project-img--placeholder">
+                        <span data-lang="es">Próximamente</span>
+                        <span data-lang="en">Coming soon</span>
                     </div>
                     <div class="project-info">
-                        <h3>Nombre del proyecto</h3>
-                        <p>Descripción breve del proyecto.</p>
+                        <h3 data-lang="es">Próximo proyecto</h3>
+                        <h3 data-lang="en">Next project</h3>
+                        <p data-lang="es">Descripción próximamente.</p>
+                        <p data-lang="en">Description coming soon.</p>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <div class="project-img">
-                        <a href="#" target="_blank" rel="noopener noreferrer"><img src="img/proyecto4.png" alt="Proyecto 4"></a>
+                    <div class="project-img project-img--placeholder">
+                        <span data-lang="es">Próximamente</span>
+                        <span data-lang="en">Coming soon</span>
                     </div>
                     <div class="project-info">
-                        <h3>Nombre del proyecto</h3>
-                        <p>Descripción breve del proyecto.</p>
+                        <h3 data-lang="es">Próximo proyecto</h3>
+                        <h3 data-lang="en">Next project</h3>
+                        <p data-lang="es">Descripción próximamente.</p>
+                        <p data-lang="en">Description coming soon.</p>
                     </div>
                 </div>
 
@@ -221,33 +277,68 @@
 
     </section>
 
+    <!-- CONTACTO -->
+    <section id="contacto">
 
+        <h2 class="section-title" data-lang="es">Contáctame</h2>
+        <h2 class="section-title" data-lang="en">Contact me</h2>
 
+        <div class="contact-card">
 
+            <div class="social-grid">
+                <div class="contact-item">
+                    <a href="https://github.com/LuckMandarina" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <a href="https://www.facebook.com/profile.php?id=100093701885887" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <a href="https://www.instagram.com/luckrmonge/" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
 
+            <form class="contact-form" id="contact-form">
 
+                <div class="form-group">
+                    <label for="nombre" data-lang="es">Nombre</label>
+                    <label for="nombre" data-lang="en">Name</label>
+                    <input type="text" id="nombre" name="name" placeholder="" required>
+                </div>
 
+                <div class="form-group">
+                    <label for="email" data-lang="es">Correo electrónico</label>
+                    <label for="email" data-lang="en">Email address</label>
+                    <input type="email" id="email" name="email" placeholder="" required>
+                </div>
 
+                <div class="form-group">
+                    <label for="mensaje" data-lang="es">Mensaje</label>
+                    <label for="mensaje" data-lang="en">Message</label>
+                    <textarea id="mensaje" name="message" rows="5" placeholder="" required></textarea>
+                </div>
 
+                <input type="text" name="_honeypot" style="display:none">
 
+                <!-- FIX 2: Un solo botón de envío, texto controlado por JS -->
+                <button type="submit" class="btn-enviar" id="btn-enviar">Enviar mensaje</button>
 
+            </form>
 
+        </div>
 
-
-
-
-
-
-
-
-
-
+    </section>
 
     <!-- SCRIPTS -->
     <script src="https://kit.fontawesome.com/f9936e573a.js" crossorigin="anonymous"></script>
 
     <script>
-        /* ── CANVAS PARTÍCULAS ── */
+        /* ── ANIMACIÓN DE PARTÍCULAS ── */
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let W, H, particles = [];
@@ -259,64 +350,49 @@
             W = canvas.width = hero.offsetWidth;
             H = canvas.height = hero.offsetHeight;
         }
-
         function makeParticle() {
             return {
-                x: Math.random() * W,
-                y: Math.random() * H,
-                vx: (Math.random() - 0.5) * 0.8,
-                vy: (Math.random() - 0.5) * 0.8,
+                x: Math.random() * W, y: Math.random() * H,
+                vx: (Math.random() - 0.5) * 0.8, vy: (Math.random() - 0.5) * 0.8,
                 r: Math.random() * 2 + 1,
             };
         }
-
         function loop() {
+            const esDark = document.body.classList.contains('dark');
             const grad = ctx.createLinearGradient(0, 0, W * 0.6, H);
-            grad.addColorStop(0, '#ffffff');
-            grad.addColorStop(1, '#f0f0f0');
+            if (esDark) {
+                grad.addColorStop(0, '#0d0d1a');
+                grad.addColorStop(1, '#1a1a2e');
+            } else {
+                grad.addColorStop(0, '#ffffff');
+                grad.addColorStop(1, '#f0f0f0');
+            }
             ctx.fillStyle = grad;
             ctx.fillRect(0, 0, W, H);
-
             for (let i = 0; i < particles.length; i++) {
                 const p = particles[i];
-                p.x += p.vx;
-                p.y += p.vy;
+                p.x += p.vx; p.y += p.vy;
                 if (p.x < 0 || p.x > W) p.vx *= -1;
                 if (p.y < 0 || p.y > H) p.vy *= -1;
-
                 for (let j = i + 1; j < particles.length; j++) {
                     const q = particles[j];
                     const d = Math.hypot(p.x - q.x, p.y - q.y);
                     if (d < MAX_DIST) {
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(q.x, q.y);
+                        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y);
                         ctx.strokeStyle = `rgba(${COLOR}, ${(1 - d / MAX_DIST) * 0.5})`;
-                        ctx.lineWidth = 0.8;
-                        ctx.stroke();
+                        ctx.lineWidth = 0.8; ctx.stroke();
                     }
                 }
-
                 const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
-                g.addColorStop(0, `rgba(${COLOR}, 1)`);
-                g.addColorStop(1, `rgba(${COLOR}, 0)`);
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2);
-                ctx.fillStyle = g;
-                ctx.fill();
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                ctx.fillStyle = '#c084fc';
-                ctx.fill();
+                g.addColorStop(0, `rgba(${COLOR}, 1)`); g.addColorStop(1, `rgba(${COLOR}, 0)`);
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2);
+                ctx.fillStyle = g; ctx.fill();
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = '#c084fc'; ctx.fill();
             }
             requestAnimationFrame(loop);
         }
-
-        window.addEventListener('resize', () => {
-            resize();
-            particles = Array.from({ length: NUM }, makeParticle);
-        });
-
+        window.addEventListener('resize', () => { resize(); particles = Array.from({ length: NUM }, makeParticle); });
         resize();
         particles = Array.from({ length: NUM }, makeParticle);
         loop();
@@ -327,7 +403,6 @@
         const track = document.getElementById('track');
         const dots = document.querySelectorAll('.dot');
         let timer;
-
         function goTo(i) {
             current = (i + total) % total;
             track.style.transform = `translateX(-${current * 100}%)`;
@@ -336,10 +411,86 @@
         function next() { goTo(current + 1); resetTimer(); }
         function prev() { goTo(current - 1); resetTimer(); }
         function resetTimer() { clearInterval(timer); timer = setInterval(next, 3000); }
-
         timer = setInterval(next, 3000);
+
+        /* ── MODO OSCURO ── */
+        const btnClaro = document.querySelector('.claro');
+        if (localStorage.getItem('tema') === 'dark') {
+            document.body.classList.add('dark');
+            btnClaro.innerHTML = '<i class="fa-solid fa-sun"></i>';
+        }
+        btnClaro.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            const esDark = document.body.classList.contains('dark');
+            btnClaro.innerHTML = esDark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+            localStorage.setItem('tema', esDark ? 'dark' : 'light');
+        });
+
+        /* ── IDIOMA ── */
+        const btnLenguaje = document.getElementById('btn-lenguaje');
+        const btnEnviar = document.getElementById('btn-enviar');
+
+        function changeLanguage(lang) {
+            document.body.setAttribute('lang', lang);
+            localStorage.setItem('preferredLang', lang);
+
+            // Actualiza placeholders
+            const placeholders = {
+                es: { nombre: 'Ingrese su nombre completo', email: 'Ingrese su correo electrónico', mensaje: 'Escriba su mensaje...' },
+                en: { nombre: 'Enter your full name',       email: 'Enter your email address',      mensaje: 'Write your message...' }
+            };
+            document.getElementById('nombre').placeholder  = placeholders[lang].nombre;
+            document.getElementById('email').placeholder   = placeholders[lang].email;
+            document.getElementById('mensaje').placeholder = placeholders[lang].mensaje;
+
+            // FIX 2: Actualiza texto del único botón de envío
+            if (!btnEnviar.disabled) {
+                btnEnviar.textContent = lang === 'es' ? 'Enviar mensaje' : 'Send message';
+            }
+
+            // Actualiza el botón de idioma
+            btnLenguaje.textContent = lang === 'es' ? 'EN' : 'ES';
+        }
+
+        // Aplica idioma guardado al cargar
+        const savedLang = localStorage.getItem('preferredLang') || 'es';
+        changeLanguage(savedLang);
+
+        btnLenguaje.addEventListener('click', () => {
+            const actual = localStorage.getItem('preferredLang') || 'es';
+            changeLanguage(actual === 'es' ? 'en' : 'es');
+        });
+    </script>
+
+    <script>
+        emailjs.init('85siCLEklg7ytcx1z');
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (document.querySelector('[name="_honeypot"]').value !== '') return;
+            const btn = document.getElementById('btn-enviar');
+            const lang = localStorage.getItem('preferredLang') || 'es';
+            btn.textContent = lang === 'en' ? 'Sending...' : 'Enviando...';
+            btn.disabled = true;
+            emailjs.sendForm('service_yiborm2', 'template_7g3ilmh', this)
+                .then(() => {
+                    const esEn = localStorage.getItem('preferredLang') === 'en';
+                    btn.textContent = esEn ? 'Message sent!' : '¡Mensaje enviado!';
+                    btn.style.background = 'green';
+                    this.reset();
+                    setTimeout(() => {
+                        btn.textContent = esEn ? 'Send message' : 'Enviar mensaje';
+                        btn.disabled = false;
+                        btn.style.background = '';
+                    }, 3000);
+                })
+                .catch((error) => {
+                    const esEn = localStorage.getItem('preferredLang') === 'en';
+                    btn.textContent = esEn ? 'Error, try again' : 'Error, intenta de nuevo';
+                    btn.disabled = false;
+                    console.error(error);
+                });
+        });
     </script>
 
 </body>
-
 </html>
