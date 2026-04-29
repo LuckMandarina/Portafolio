@@ -818,12 +818,20 @@ body {
 
 @media (max-width: 480px) {
 
+    .Presentacion {
+        font-size: 2.9rem;
+    }
+
     .introduccion p {
-        font-size: 1.2rem;
+        font-size: 1rem;
+    }
+
+    .carousel .carousel-slide p {
+        font-size: 1.3rem;
     }
 
     .welcome {
-        font-size: 1.9rem;
+        font-size: 1.5rem;
     }
 
     .lenguaje.claro {
@@ -833,11 +841,15 @@ body {
     }
 
     .Link.inicio a {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .continuar {
         left: 48%;
+    }
+
+    .section-title {
+        font-size: 2.4rem;
     }
 
     .about-text p {
@@ -845,18 +857,23 @@ body {
     }
 
     .skills-title {
-        font-size: 2.2rem;
+        font-size: 2.4rem;
     }
 
     .skills-grid {
         grid-template-columns: 1fr 1fr;
     }
+    
 
     .skill-card {
-        width: 140px;
-        height: 140px;
+        width: 120px;
+        height: 130px;
     }
     
+    .project-title {
+        font-size: 2.4rem;
+    }
+
     .project-container {
         padding: 0 3rem;
     }
@@ -873,6 +890,8 @@ body {
         font-weight: 600;
     }
 
+
+    
     .contact-card {
         border: none;
     }
