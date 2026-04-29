@@ -89,8 +89,8 @@ body {
     position: relative;
     width: 100%;
     height: 100vh;
-    max-width: 1920px;
-    max-height: 1080px;
+    max-width: 2920px;
+    max-height: 2080px;
     margin: 0 auto;
     overflow: hidden;
     background: var(--bg-hero);
@@ -396,9 +396,15 @@ body {
 }
 
 @keyframes bounce {
+
     0%,
-    100% { transform: translateY(0); }
-    50%  { transform: translateY(8px); }
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(8px);
+    }
 }
 
 /* ── Sección portfolio ── */
@@ -740,4 +746,148 @@ body {
 
 .btn-enviar:active {
     transform: scale(0.98);
+}
+
+/* ********************************** */
+/*       MEDIA QUERIES -- 768px       */
+/* ********************************** */
+
+@media (max-width: 768px) {
+
+
+    .introduccion p {
+        font-size: 1.5rem;
+    }
+
+    .welcome {
+        font-size: 1.9rem;
+    }
+
+    .lenguaje.claro {
+        font-size: 1.3rem;
+        width: 46px;
+        height: 46px;
+    }
+
+    .Link.inicio a {
+        font-size: 1.2rem;
+    }
+
+    .continuar {
+        left: 48%;
+    }
+
+    .about-text p {
+        font-size: 1.4rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .project-container {
+        padding: 0 5rem;
+    }
+    
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+    .project-info h3 {
+        font-size: 1.5rem;
+    }
+
+    .project-info p {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .social-grid .contact-item a i {
+        font-size: 2.3rem;
+    }
+
+    .contact-form .form-group label {
+        font-size: 1.3rem;
+    }
+
+    .contact-form .form-group input::placeholder {
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .introduccion p {
+        font-size: 1.2rem;
+    }
+
+    .welcome {
+        font-size: 1.9rem;
+    }
+
+    .lenguaje.claro {
+        font-size: 1.3rem;
+        width: 46px;
+        height: 46px;
+    }
+
+    .Link.inicio a {
+        font-size: 1.2rem;
+    }
+
+    .continuar {
+        left: 48%;
+    }
+
+    .about-text p {
+        font-size: 1.1rem;
+    }
+
+    .skills-title {
+        font-size: 2.2rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .skill-card {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .project-container {
+        padding: 0 3rem;
+    }
+    
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+    .project-info h3 {
+        font-size: 1.3rem;
+    }
+
+    .project-info p {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .contact-card {
+        border: none;
+    }
+
+    .social-grid .contact-item a i {
+        font-size: 1.3rem;
+    }
+
+    .contact-form .form-group label {
+        font-size: 1.2rem;
+    }
+
+    .contact-form .form-group input::placeholder {
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
 }
